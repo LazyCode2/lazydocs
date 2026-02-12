@@ -28,6 +28,13 @@ Add a new API endpoint with descriptions and status codes:
 
 ```Bash
 ./lazydocs -add api/v1/users -m POST -d "Create a new user" -status 201
+
+# Full endpoint with body
+./lazydocs -add api/v1/users -m POST \
+  -d "Create user" \
+  -body '{"name": "string", "email": "string"}' \
+  -response '{"id": "string", "name": "string"}' \
+  -status 201
 ```
 #### Listing Endpoints :
 View your documented endpoints:
