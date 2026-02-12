@@ -3,7 +3,7 @@
 A CLI tool that generates structured API documentation JSON from simple terminal commands.
 
 ![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)
-![License](https://codeberg.org/LazyCode2/lazydocs/src/branch/main/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green)](https://codeberg.org/LazyCode2/lazydocs/src/branch/main/LICENSE)
 ![Status](https://img.shields.io/badge/status-active-success)
 ![Platform](https://img.shields.io/badge/platform-linux%20%7C%20macos%20%7C%20windows-lightgrey)
 
