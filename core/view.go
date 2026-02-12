@@ -31,8 +31,11 @@ func ViewByMethod(method string) error {
 		return fmt.Errorf("failed to load docs: %w", err)
 	}
 
+	found := false // tracker for sort search
+
 	for _, ep := range docs.Endpoints {
 		if ep.Method == method {
+			found = true
 			fmt.Println("\033[36m---------------------------------------------------\033[0m")
 			fmt.Printf("\033[33mPath:\033[0m %s\n", ep.Path)
 			fmt.Printf("\033[32mMethod:\033[0m %s\n", ep.Method)
@@ -41,7 +44,9 @@ func ViewByMethod(method string) error {
 		}
 	}
 
-	logger.Warn("No endpoints found for method %s\n", method)
+	if !found {
+		logger.Warn("⚠️ No endpoints found for method %s\n", method)
+	}
 
 	return nil
 }
