@@ -4,6 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"os"
+
+	"codeberg.org/LazyCode2/lazydocs/core"
 )
 
 var (
@@ -22,6 +24,8 @@ var (
 	// Project specific flags
 	initProject = flag.Bool("init", false, "Initilize Project")
 	versionFlag = flag.String("v", "1.0.0", "API version")
+	listAll     = flag.Bool("list", false, "")
+	showHelp    = flag.Bool("h", false, "Show usage")
 )
 
 func InitCli() {
@@ -29,25 +33,30 @@ func InitCli() {
 }
 
 func ExecuteCommand() error {
-	if *initProject {
+	switch {
+	case *initProject:
 		return InitProject(*versionFlag)
-	}
 
-	if *addEndpoint != "" {
+	case *listAll:
+		return core.ViewAll()
+
+	case *addEndpoint != "":
 		return HandleAdd()
-	}
 
-	if *deleteAll {
+	case *deleteAll:
 		return HandleDeleteAll()
-	}
 
-	if *deleteEndpoint != "" {
+	case *deleteEndpoint != "":
 		return HandleDelete()
+
+	case *showHelp:
+		PrintHelp()
+		return nil
+
+	default:
+		return nil
 	}
 
-	// Show help if addEndpoint is ""
-	PrintHelp()
-	return nil
 }
 
 func HandleAdd() error {
