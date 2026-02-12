@@ -3,6 +3,7 @@ package cli
 import (
 	"flag"
 	"fmt"
+	"os"
 )
 
 var (
@@ -44,8 +45,8 @@ func ExecuteCommand() error {
 		return HandleDelete()
 	}
 
-	//Show usage if addEndpoint is ""
-	flag.Usage()
+	// Show help if addEndpoint is ""
+	PrintHelp()
 	return nil
 }
 
@@ -72,4 +73,28 @@ func HandleDeleteAll() error {
 	}
 
 	return DeleteAllEndpoints()
+}
+
+func PrintHelp() {
+	fmt.Println(`
+lazydocs — Minimal API Docs CLI
+
+Usage:
+  lazydocs [flags]
+
+Flags:
+  -init             Initialize project
+  -v <version>      API version (default 1.0.0)
+  
+  -add <endpoint>   Add new API endpoint
+  -m <method>       HTTP method for add (default GET)
+  -d <desc>         Description for add
+  -body <schema>    Request body (optional)
+  -response <schema> Response body (optional)
+  -status <code>    HTTP status code (default 200)
+  -delete <endpoint> Delete endpoint
+  -dm <method>       Method of endpoint to delete
+  -delete-all       Delete all endpoints
+`)
+	os.Exit(0)
 }
