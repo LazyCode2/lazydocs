@@ -94,6 +94,9 @@ Usage:
 Flags:
   -init             Initialize project
   -v <version>      API version (default 1.0.0)
+  -h				Show help
+  
+  -list 			List all API endpoints
   
   -add <endpoint>   Add new API endpoint
   -m <method>       HTTP method for add (default GET)
