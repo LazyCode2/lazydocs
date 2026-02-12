@@ -17,6 +17,10 @@ var (
 	deleteEndpoint = flag.String("delete", "", "API endpoint to delete (e.g., api/v1/homepage)")
 	deleteMethod   = flag.String("dm", "GET", "HTTP method of endpoint to delete")
 	deleteAll      = flag.Bool("delete-all", false, "Delete all endpoints")
+
+	// Project specific flags
+	initProject = flag.Bool("init", false, "Initilize Project")
+	versionFlag = flag.String("v", "1.0.0", "API version")
 )
 
 func InitCli() {
@@ -24,8 +28,12 @@ func InitCli() {
 }
 
 func ExecuteCommand() error {
+	if *initProject {
+		return InitProject(*versionFlag)
+	}
+
 	if *addEndpoint != "" {
-		return handleAdd()
+		return HandleAdd()
 	}
 
 	if *deleteAll {
@@ -41,7 +49,7 @@ func ExecuteCommand() error {
 	return nil
 }
 
-func handleAdd() error {
+func HandleAdd() error {
 	if *description == "" {
 		return fmt.Errorf("description is required (use -d flag)")
 	}
