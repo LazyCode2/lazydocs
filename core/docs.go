@@ -3,6 +3,7 @@ package core
 import (
 	"encoding/json"
 	"os"
+	"path/filepath"
 	"time"
 )
 
@@ -47,4 +48,24 @@ func LoadDocs() (*APIDocumentation, error) {
 	}
 
 	return &docs, nil
+}
+
+func SaveDocs(docs *APIDocumentation) error {
+	data, err := json.MarshalIndent(docs, "", "  ")
+	if err != nil {
+		return err
+	}
+
+	dir := filepath.Dir(docsFileName)
+	if dir != "." {
+		if err := os.MkdirAll(dir, 0755); err != nil {
+			return err
+		}
+	}
+
+	if err := os.WriteFile(docsFileName, data, 0644); err != nil {
+		return err
+	}
+
+	return nil
 }
