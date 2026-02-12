@@ -16,20 +16,20 @@ go build -o lazydocs main.go
 
 ## 📖 Usage
 
-#### Initialize a Project
+#### Initialize a Project :
 Start by creating a new documentation project:
 
 ```Bash
 ./lazydocs -init -v 1.2.0
 ```
 
-#### Adding Endpoints
+#### Adding Endpoints :
 Add a new API endpoint with descriptions and status codes:
 
 ```Bash
 ./lazydocs -add api/v1/users -m POST -d "Create a new user" -status 201
 ```
-#### Listing Endpoints
+#### Listing Endpoints :
 View your documented endpoints:
 
 ```Bash
@@ -40,7 +40,7 @@ View your documented endpoints:
 ./lazydocs -list GET
 ```
 
-#### Deleting Endpoints
+#### Deleting Endpoints :
 Remove specific endpoints or clear the entire project:
 
 ```Bash
