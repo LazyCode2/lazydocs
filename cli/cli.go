@@ -24,7 +24,7 @@ var (
 	// Project specific flags
 	initProject = flag.Bool("init", false, "Initilize Project")
 	versionFlag = flag.String("v", "1.0.0", "API version")
-	listAll     = flag.Bool("list", false, "")
+	listFlag    = flag.String("list", "", "List API endpoints. Optional method (GET, POST, etc.)")
 	showHelp    = flag.Bool("h", false, "Show usage")
 )
 
@@ -37,8 +37,12 @@ func ExecuteCommand() error {
 	case *initProject:
 		return InitProject(*versionFlag)
 
-	case *listAll:
-		return core.ViewAll()
+	case *listFlag != "":
+		if *listFlag == "" {
+			return core.ViewAll()
+		} else {
+			return core.ViewByMethod(*listFlag)
+		}
 
 	case *addEndpoint != "":
 		return HandleAdd()
