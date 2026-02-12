@@ -2,6 +2,7 @@ package cli
 
 import (
 	"flag"
+	"fmt"
 )
 
 var (
@@ -28,7 +29,9 @@ func ExecuteCommand() error {
 }
 
 func handleAdd() error {
-	//TODO Handle add command
+	if *description == "" {
+		return fmt.Errorf("description is required (use -d flag)")
+	}
 
-	return nil
+	return AddAPIEndpoint(*addEndpoint, *method, *description, *requestBody, *responseBody, *statusCode)
 }
