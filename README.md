@@ -4,7 +4,7 @@ A CLI tool that generates structured API documentation JSON from simple terminal
 
 ## Installation
 ```bash
-git clone https://github.com/yourusername/lazydocs.git
+git clone https://codeberg.org/LazyCode2/lazydocs.git
 cd lazydocs
 go build -o lazydocs main.go
 ```
