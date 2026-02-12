@@ -5,7 +5,10 @@ import (
 	"time"
 
 	"codeberg.org/LazyCode2/lazydocs/core"
+	"codeberg.org/LazyCode2/lazydocs/utils"
 )
+
+var logger = utils.NewLogger()
 
 func AddAPIEndpoint(path, method, description, requestBody, responseBody string, statusCode int) error {
 	docs, err := core.LoadDocs()
@@ -48,10 +51,10 @@ func AddAPIEndpoint(path, method, description, requestBody, responseBody string,
 		return fmt.Errorf("failed to save docs: %w", err)
 	}
 
-	fmt.Printf("✓ Added endpoint: %s %s\n", method, path)
-	fmt.Printf("  Description: %s\n", description)
-	fmt.Printf("  Status: %d\n", statusCode)
-	fmt.Printf("  Docs saved")
+	logger.Info("Added endpoint: %s %s", method, path)
+	logger.Info("Description: %s", description)
+	logger.Info("Status: %d", statusCode)
+	logger.Info("Docs saved to %s", "api-docs.json")
 
 	return nil
 }
