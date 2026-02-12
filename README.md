@@ -2,24 +2,54 @@
 
 A CLI tool that generates structured API documentation JSON from simple terminal commands.
 
-## Installation
+![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)
+![License](https://codeberg.org/LazyCode2/lazydocs/src/branch/main/LICENSE)
+![Status](https://img.shields.io/badge/status-active-success)
+![Platform](https://img.shields.io/badge/platform-linux%20%7C%20macos%20%7C%20windows-lightgrey)
+
+## 🛠 Installation
 ```bash
 git clone https://codeberg.org/LazyCode2/lazydocs.git
 cd lazydocs
 go build -o lazydocs main.go
 ```
 
-## Usage
-```bash
-# Initialize project
-./lazydocs -init -v 1.0.0
+## 📖 Usage
 
-# Add endpoint
-./lazydocs -add api/v1/home -m GET -d "Get homepage" -status 200
+#### Initialize a Project
+Start by creating a new documentation project:
 
-# Delete endpoint
-./lazydocs -delete api/v1/home -dm GET
+```Bash
+./lazydocs -init -v 1.2.0
+```
 
-# Delete all endpoints
+#### Adding Endpoints
+Add a new API endpoint with descriptions and status codes:
+
+```Bash
+./lazydocs -add api/v1/users -m POST -d "Create a new user" -status 201
+```
+#### Listing Endpoints
+View your documented endpoints:
+
+```Bash
+# List all endpoints
+./lazydocs -list
+
+# List only GET endpoints
+./lazydocs -list GET
+```
+
+#### Deleting Endpoints
+Remove specific endpoints or clear the entire project:
+
+```Bash
+# Delete a specific endpoint
+./lazydocs -delete api/v1/users -dm POST
+
+# Delete all
 ./lazydocs -delete-all
 ```
+
+## 🤝 Contributing
+Contributions are welcome! Feel free to open an issue or submit a pull request on Codeberg.
