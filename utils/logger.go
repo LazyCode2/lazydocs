@@ -15,3 +15,11 @@ func NewLogger() *Logger {
 func (l *Logger) Info(msg string, a ...any) {
 	fmt.Printf("%s %s\n", l.Prefix, fmt.Sprintf(msg, a...))
 }
+
+func (l *Logger) Warn(msg string, a ...any) {
+	fmt.Printf("%s ⚠️ %s\n", l.Prefix, fmt.Sprintf(msg, a...))
+}
+
+func (l *Logger) Success(msg string, a ...any) {
+	fmt.Printf("%s ✓ %s\n", l.Prefix, fmt.Sprintf(msg, a...))
+}
