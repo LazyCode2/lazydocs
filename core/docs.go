@@ -1,6 +1,10 @@
 package core
 
-import "time"
+import (
+	"encoding/json"
+	"os"
+	"time"
+)
 
 const (
 	docsFileName = "api-docs.json"
@@ -21,4 +25,26 @@ type APIDocumentation struct {
 	Version   string        `json:"version"`
 	Endpoints []APIEndpoint `json:"endpoints"`
 	UpdatedAt time.Time     `json:"updatedAt"`
+}
+
+func LoadDocs() (*APIDocumentation, error) {
+	if _, err := os.Stat(docsFileName); os.IsNotExist(err) {
+		return &APIDocumentation{
+			Version:   "1.0.0",
+			Endpoints: []APIEndpoint{},
+			UpdatedAt: time.Now(),
+		}, nil
+	}
+
+	data, err := os.ReadFile(docsFileName)
+	if err != nil {
+		return nil, err
+	}
+
+	var docs APIDocumentation
+	if err := json.Unmarshal(data, &docs); err != nil {
+		return nil, err
+	}
+
+	return &docs, nil
 }
