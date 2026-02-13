@@ -103,9 +103,11 @@ Flags:
   -init             Initialize project
   -v <version>      API version (default 1.0.0)
   -h				Show help
-  
+
+  -base <base_url>  Add base url for your endpoint
+
   -list 			List all API endpoints
-  
+
   -add <endpoint>   Add new API endpoint
   -m <method>       HTTP method for add (default GET)
   -d <desc>         Description for add
