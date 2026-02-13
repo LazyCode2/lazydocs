@@ -24,7 +24,8 @@ var (
 	// Project specific flags
 	initProject = flag.Bool("init", false, "Initilize Project")
 	versionFlag = flag.String("v", "1.0.0", "API version")
-	listFlag    = flag.String("list", "", "List API endpoints. Optional method (GET, POST, etc.)")
+	listAll     = flag.Bool("list", false, "List all endpoints")
+	listBy      = flag.String("lm", "", "List by method (GET, POST...)")
 	showHelp    = flag.Bool("h", false, "Show usage")
 	BaseUrl     = flag.String("base", "", "Add base url")
 )
@@ -38,13 +39,11 @@ func ExecuteCommand() error {
 	case *initProject:
 		return InitProject(*versionFlag)
 
-	case *listFlag != "":
-		if *listFlag == "" {
-			return core.ViewAll()
-		} else {
-			return core.ViewByMethod(*listFlag)
-		}
+	case *listAll:
+		return core.ViewAll()
 
+	case *listBy != "":
+		return core.ViewByMethod(*listBy)
 	case *BaseUrl != "":
 		return AddBaseUrl(*BaseUrl)
 
@@ -107,6 +106,7 @@ Flags:
   -base <base_url>  Add base url for your endpoint
 
   -list 			List all API endpoints
+  -lm <method>		List by Method
 
   -add <endpoint>   Add new API endpoint
   -m <method>       HTTP method for add (default GET)

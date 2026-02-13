@@ -14,6 +14,7 @@ func ViewAll() error {
 		return fmt.Errorf("failed to load docs: %w", err)
 	}
 
+	fmt.Printf("\033[36mBase Url:\033[0m %s\n", docs.BaseURL)
 	for _, ep := range docs.Endpoints {
 		fmt.Println("\033[36m---------------------------------------------------\033[0m")
 		fmt.Printf("\033[33mPath:\033[0m %s\n", ep.Path)
@@ -33,6 +34,7 @@ func ViewByMethod(method string) error {
 
 	found := false // tracker for sort search
 
+	fmt.Printf("\033[36mBase Url:\033[0m %s\n", docs.BaseURL)
 	for _, ep := range docs.Endpoints {
 		if ep.Method == method {
 			found = true
