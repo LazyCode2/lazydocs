@@ -23,6 +23,7 @@ type APIEndpoint struct {
 }
 
 type APIDocumentation struct {
+	BaseURL   string        `json:"base_url"`
 	Version   string        `json:"version"`
 	Endpoints []APIEndpoint `json:"endpoints"`
 	UpdatedAt time.Time     `json:"updatedAt"`
