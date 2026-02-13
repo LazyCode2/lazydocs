@@ -26,6 +26,7 @@ var (
 	versionFlag = flag.String("v", "1.0.0", "API version")
 	listFlag    = flag.String("list", "", "List API endpoints. Optional method (GET, POST, etc.)")
 	showHelp    = flag.Bool("h", false, "Show usage")
+	BaseUrl     = flag.String("base", "", "Add base url")
 )
 
 func InitCli() {
@@ -43,6 +44,9 @@ func ExecuteCommand() error {
 		} else {
 			return core.ViewByMethod(*listFlag)
 		}
+
+	case *BaseUrl != "":
+		return AddBaseUrl(*BaseUrl)
 
 	case *addEndpoint != "":
 		return HandleAdd()

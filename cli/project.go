@@ -23,3 +23,22 @@ func InitProject(version string) error {
 
 	return nil
 }
+
+func AddBaseUrl(url string) error {
+	docs, err := core.LoadDocs()
+	if err != nil {
+		logger.Warn("Failed to load docs: %v", err)
+		return err
+	}
+
+	docs.BaseURL = url
+	docs.UpdatedAt = time.Now()
+
+	if err := core.SaveDocs(docs); err != nil {
+		logger.Warn("Failed to save docs: %v", err)
+		return err
+	}
+
+	logger.Success("Base URL updated successfully")
+	return nil
+}
