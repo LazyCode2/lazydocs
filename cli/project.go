@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"codeberg.org/LazyCode2/lazydocs/core"
+	"codeberg.org/LazyCode2/lazydocs/site/template"
 )
 
 func InitProject(version string) error {
@@ -18,7 +19,13 @@ func InitProject(version string) error {
 		return err
 	}
 
+	if err := template.GenerateTemplate(); err != nil {
+		logger.Warn("Failed to create template")
+		return err
+	}
+
 	logger.Success("Initialized new lazydocs project")
+	logger.Success("Template initialized")
 	logger.Info("Docs file created")
 
 	return nil

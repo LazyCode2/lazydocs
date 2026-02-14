@@ -1,3 +1,8 @@
+package template
+
+import "os"
+
+const defaultTemplate = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,3 +76,17 @@
 
 </body>
 </html>
+`
+
+func GenerateTemplate() error {
+	if err := os.MkdirAll("template", 0755); err != nil {
+		return err
+	}
+
+	err := os.WriteFile("template/index.tmpl", []byte(defaultTemplate), 0644)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
