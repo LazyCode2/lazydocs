@@ -52,7 +52,12 @@ func ExecuteCommand() error {
 		return AddBaseUrl(*BaseUrl)
 
 	case *renderFlag:
-		return site.RenderStaticSite()
+		if err := site.RenderStaticSite(); err != nil {
+			fmt.Println("Failed to render site:", err)
+			return err
+		}
+		logger.Info("Static site generated in /docs folder")
+		return nil
 
 	case *addEndpoint != "":
 		return HandleAdd()
