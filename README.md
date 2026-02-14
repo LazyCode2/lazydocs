@@ -63,8 +63,6 @@ Remove specific endpoints or clear the entire project:
 # Generates a static site based on JSON
 ./lazydocs -render 
 ```
-```
-```
 
 ## 🤝 Contributing
 Contributions are welcome! Feel free to open an issue or submit a pull request on Codeberg.
