@@ -7,6 +7,8 @@ A CLI tool that generates structured API documentation JSON from simple terminal
 ![Status](https://img.shields.io/badge/status-active-success)
 ![Platform](https://img.shields.io/badge/platform-linux%20%7C%20macos%20%7C%20windows-lightgrey)
 
+<img src="./assets/preview-top.png" ></img>
+
 ## 🛠 Installation
 ```bash
 git clone https://codeberg.org/LazyCode2/lazydocs.git
