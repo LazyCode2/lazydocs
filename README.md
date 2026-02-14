@@ -58,5 +58,13 @@ Remove specific endpoints or clear the entire project:
 ./lazydocs -delete-all
 ```
 
+## Site rendering
+```bash
+# Generates a static site based on JSON
+./lazydocs -render 
+```
+```
+```
+
 ## 🤝 Contributing
 Contributions are welcome! Feel free to open an issue or submit a pull request on Codeberg.
