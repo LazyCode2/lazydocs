@@ -12,21 +12,21 @@ const (
 )
 
 type APIEndpoint struct {
-	Path         string    `json:"path"`
-	Method       string    `json:"method"`
-	Description  string    `json:"description"`
-	RequestBody  string    `json:"requestBody,omitempty"`
-	ResponseBody string    `json:"responseBody,omitempty"`
-	StatusCode   int       `json:"statusCode"`
-	CreatedAt    time.Time `json:"createdAt"`
-	UpdatedAt    time.Time `json:"updatedAt"`
+	Path         string `json:"path"`
+	Method       string `json:"method"`
+	Description  string `json:"description"`
+	RequestBody  string `json:"requestBody,omitempty"`
+	ResponseBody string `json:"responseBody,omitempty"`
+	StatusCode   int    `json:"statusCode"`
+	CreatedAt    string `json:"createdAt"`
+	UpdatedAt    string `json:"updatedAt"`
 }
 
 type APIDocumentation struct {
 	BaseURL   string        `json:"base_url"`
 	Version   string        `json:"version"`
 	Endpoints []APIEndpoint `json:"endpoints"`
-	UpdatedAt time.Time     `json:"updatedAt"`
+	UpdatedAt string        `json:"updatedAt"`
 }
 
 func LoadDocs() (*APIDocumentation, error) {
@@ -34,7 +34,7 @@ func LoadDocs() (*APIDocumentation, error) {
 		return &APIDocumentation{
 			Version:   "1.0.0",
 			Endpoints: []APIEndpoint{},
-			UpdatedAt: time.Now(),
+			UpdatedAt: time.Now().Format("Jan 2, 2006 at 3:04 PM"),
 		}, nil
 	}
 

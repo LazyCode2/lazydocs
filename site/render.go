@@ -59,7 +59,7 @@ func RenderStaticSite() error {
 	data := PageData{
 		BaseURL:   docs.BaseURL,
 		Version:   docs.Version,
-		UpdatedAt: docs.UpdatedAt.Format("Jan 2, 2006 at 3:04 PM"),
+		UpdatedAt: docs.UpdatedAt,
 		Endpoints: docs.Endpoints,
 	}
 

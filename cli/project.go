@@ -11,7 +11,7 @@ func InitProject(version string) error {
 	docs := &core.APIDocumentation{
 		Version:   version,
 		Endpoints: []core.APIEndpoint{},
-		UpdatedAt: time.Now(),
+		UpdatedAt: time.Now().Format("Jan 2, 2006 at 3:04 PM"),
 	}
 
 	if err := core.SaveDocs(docs); err != nil {
@@ -39,7 +39,7 @@ func AddBaseUrl(url string) error {
 	}
 
 	docs.BaseURL = url
-	docs.UpdatedAt = time.Now()
+	docs.UpdatedAt = time.Now().Format("Jan 2, 2006 at 3:04 PM")
 
 	if err := core.SaveDocs(docs); err != nil {
 		logger.Warn("Failed to save docs: %v", err)

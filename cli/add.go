@@ -1,11 +1,10 @@
 package cli
 
 import (
-	"fmt"
-	"time"
-
 	"codeberg.org/LazyCode2/lazydocs/core"
 	"codeberg.org/LazyCode2/lazydocs/utils"
+	"fmt"
+	"time"
 )
 
 var logger = utils.NewLogger()
@@ -22,12 +21,12 @@ func AddAPIEndpoint(path, method, description, requestBody, responseBody string,
 			docs.Endpoints[i].RequestBody = requestBody
 			docs.Endpoints[i].ResponseBody = responseBody
 			docs.Endpoints[i].StatusCode = statusCode
-			docs.Endpoints[i].UpdatedAt = time.Now()
+			docs.Endpoints[i].UpdatedAt = time.Now().Format("Jan 2, 2006 at 3:04 PM")
+			docs.UpdatedAt = time.Now().Format("Jan 2, 2006 at 3:04 PM")
 
 			if err := core.SaveDocs(docs); err != nil {
 				return fmt.Errorf("failed to save docs: %w", err)
 			}
-
 			fmt.Printf("✓ Updated endpoint: %s %s\n", method, path)
 			return nil
 		}
@@ -40,12 +39,12 @@ func AddAPIEndpoint(path, method, description, requestBody, responseBody string,
 		RequestBody:  requestBody,
 		ResponseBody: responseBody,
 		StatusCode:   statusCode,
-		CreatedAt:    time.Now(),
-		UpdatedAt:    time.Now(),
+		CreatedAt:    time.Now().Format("Jan 2, 2006 at 3:04 PM"),
+		UpdatedAt:    time.Now().Format("Jan 2, 2006 at 3:04 PM"),
 	}
 
 	docs.Endpoints = append(docs.Endpoints, newEndpoint)
-	docs.UpdatedAt = time.Now()
+	docs.UpdatedAt = time.Now().Format("Jan 2, 2006 at 3:04 PM")
 
 	if err := core.SaveDocs(docs); err != nil {
 		return fmt.Errorf("failed to save docs: %w", err)
