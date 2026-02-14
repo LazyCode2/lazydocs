@@ -110,25 +110,33 @@ lazydocs — Minimal API Docs CLI
 Usage:
   lazydocs [flags]
 
-Flags:
-  -init             Initialize project
-  -v <version>      API version (default 1.0.0)
-  -h				Show help
+Project:
+  -init                    Initialize project
+  -v <version>             API version (default: 1.0.0)
+  -base <base_url>         Set base URL
 
-  -base <base_url>  Add base url for your endpoint
+View:
+  -list                    List all API endpoints
+  -lm <method>             List endpoints by HTTP method
 
-  -list 			List all API endpoints
-  -lm <method>		List by Method
+Site:
+	-render                  Generate documentation site from JSON
 
-  -add <endpoint>   Add new API endpoint
-  -m <method>       HTTP method for add (default GET)
-  -d <desc>         Description for add
-  -body <schema>    Request body (optional)
-  -response <schema> Response body (optional)
-  -status <code>    HTTP status code (default 200)
-  -delete <endpoint> Delete endpoint
-  -dm <method>       Method of endpoint to delete
-  -delete-all       Delete all endpoints
+Add Endpoint:
+  -add <endpoint>          Add new API endpoint
+  -m <method>              HTTP method (default: GET)
+  -d <description>         Endpoint description
+  -body <schema>           Request body (optional)
+  -response <schema>       Response body (optional)
+  -status <code>           HTTP status code (default: 200)
+
+Delete:
+  -delete <endpoint>       Delete specific endpoint
+  -dm <method>             Method of endpoint to delete
+  -delete-all              Delete all endpoints
+
+Other:
+  -h                       Show help
 `)
 	os.Exit(0)
 }
