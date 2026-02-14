@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"codeberg.org/LazyCode2/lazydocs/core"
+	"codeberg.org/LazyCode2/lazydocs/site"
 )
 
 var (
@@ -28,6 +29,9 @@ var (
 	listBy      = flag.String("lm", "", "List by method (GET, POST...)")
 	showHelp    = flag.Bool("h", false, "Show usage")
 	BaseUrl     = flag.String("base", "", "Add base url")
+
+	// Site flags
+	renderFlag = flag.Bool("render", false, "Render your API docs")
 )
 
 func InitCli() {
@@ -46,6 +50,9 @@ func ExecuteCommand() error {
 		return core.ViewByMethod(*listBy)
 	case *BaseUrl != "":
 		return AddBaseUrl(*BaseUrl)
+
+	case *renderFlag:
+		return site.RenderStaticSite()
 
 	case *addEndpoint != "":
 		return HandleAdd()
