@@ -1,12 +1,11 @@
 package site
 
 import (
+	"codeberg.org/LazyCode2/lazydocs/core"
 	"html/template"
 	"os"
 	"path/filepath"
 	"time"
-
-	"codeberg.org/LazyCode2/lazydocs/core"
 )
 
 const outputDir = "docs"
@@ -14,7 +13,7 @@ const outputDir = "docs"
 type PageData struct {
 	BaseURL   string
 	Version   string
-	UpdatedAt time.Time
+	UpdatedAt string
 	Endpoints []core.APIEndpoint
 }
 
@@ -42,7 +41,13 @@ func RenderStaticSite() error {
 		return err
 	}
 
-	tmpl := template.Must(template.New("index").Parse(tmplContent))
+	funcMap := template.FuncMap{
+		"formatDate": func(t time.Time) string {
+			return t.Format("Jan 2, 2006 at 3:04 PM")
+		},
+	}
+
+	tmpl := template.Must(template.New("index").Funcs(funcMap).Parse(tmplContent))
 
 	filePath := filepath.Join(outputDir, "index.html")
 	file, err := os.Create(filePath)
@@ -54,7 +59,7 @@ func RenderStaticSite() error {
 	data := PageData{
 		BaseURL:   docs.BaseURL,
 		Version:   docs.Version,
-		UpdatedAt: docs.UpdatedAt,
+		UpdatedAt: docs.UpdatedAt.Format("Jan 2, 2006 at 3:04 PM"),
 		Endpoints: docs.Endpoints,
 	}
 
