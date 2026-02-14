@@ -68,6 +68,8 @@ Render your JSON documentation as a static HTML site:
 
 This generates a clean, styled documentation site in the `docs/` folder based on your documented endpoints.
 
+<img src="./assets/preview.jpg" ></img>
+
 ## Template customization
 
 After running `-init`, lazydocs creates a default template at `template/index.tmpl`. You can customize this template to match your branding or documentation style.
