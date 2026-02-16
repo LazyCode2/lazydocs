@@ -91,12 +91,12 @@ func HandleDelete() error {
 }
 
 func HandleDeleteAll() error {
-	fmt.Print("⚠️  Are you sure you want to delete ALL endpoints? (yes/no): ")
+	logger.Warn("Are you sure you want to delete ALL endpoints? (yes/no): ")
 	var confirmation string
 	fmt.Scanln(&confirmation)
 
 	if confirmation != "yes" {
-		fmt.Println("❌ Deletion cancelled")
+		logger.Info("Deletion cancelled")
 		return nil
 	}
 
