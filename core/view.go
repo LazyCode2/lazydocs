@@ -2,6 +2,7 @@ package core
 
 import (
 	"fmt"
+	"os"
 
 	"codeberg.org/LazyCode2/lazydocs/utils"
 )
@@ -47,7 +48,8 @@ func ViewByMethod(method string) error {
 	}
 
 	if !found {
-		logger.Warn("⚠️ No endpoints found for method %s\n", method)
+		logger.Warn("No endpoints found for method %s\n", method)
+		os.Exit(1)
 	}
 
 	return nil
