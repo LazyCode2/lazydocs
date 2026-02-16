@@ -27,7 +27,7 @@ func AddAPIEndpoint(path, method, description, requestBody, responseBody string,
 			if err := core.SaveDocs(docs); err != nil {
 				return fmt.Errorf("failed to save docs: %w", err)
 			}
-			fmt.Printf("✓ Updated endpoint: %s %s\n", method, path)
+			logger.Success("Updated endpoint: %s %s\n", method, path)
 			return nil
 		}
 	}
