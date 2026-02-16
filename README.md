@@ -90,6 +90,7 @@ Each endpoint in `{{.Endpoints}}` contains:
 - `{{.Method}}` - HTTP method (GET, POST, etc.)
 - `{{.Path}}` - Endpoint path
 - `{{.Description}}` - Endpoint description
+- `{{.Tag}}` - Tag of the endpoint 
 - `{{.RequestBody}}` - Request body schema (if provided)
 - `{{.ResponseBody}}` - Response body schema (if provided)
 - `{{.StatusCode}}` - HTTP status code
