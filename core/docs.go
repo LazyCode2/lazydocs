@@ -15,6 +15,7 @@ type APIEndpoint struct {
 	Path         string `json:"path"`
 	Method       string `json:"method"`
 	Description  string `json:"description"`
+	Tag          string `json:"tag"`
 	RequestBody  string `json:"requestBody,omitempty"`
 	ResponseBody string `json:"responseBody,omitempty"`
 	StatusCode   int    `json:"statusCode"`
