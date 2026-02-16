@@ -9,7 +9,7 @@ import (
 
 var logger = utils.NewLogger()
 
-func AddAPIEndpoint(path, method, description, requestBody, responseBody string, statusCode int) error {
+func AddAPIEndpoint(path, method, description, tag, requestBody, responseBody string, statusCode int) error {
 	docs, err := core.LoadDocs()
 	if err != nil {
 		return fmt.Errorf("failed to load docs: %w", err)
@@ -36,6 +36,7 @@ func AddAPIEndpoint(path, method, description, requestBody, responseBody string,
 		Path:         path,
 		Method:       method,
 		Description:  description,
+		Tag:          tag,
 		RequestBody:  requestBody,
 		ResponseBody: responseBody,
 		StatusCode:   statusCode,
